@@ -1,0 +1,24 @@
+grammar RAML
+
+  rule config
+    name space string
+  end
+
+  rule name
+    [a-zA-Z] [a-zA-Z0-9]*
+  end
+
+  rule space
+    [ \t]+
+  end
+
+  rule string
+    '"' .* '"'
+  end
+
+  rule eol
+    "\n"
+  end
+
+end
+

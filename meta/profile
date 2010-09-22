@@ -1,0 +1,25 @@
+--- 
+title: RAML
+suite: rubyworks
+summary: Ruby Syntax Data Language
+license: Ruby
+contact: Trans <transfire@gmail.com>
+created: 2010-09-21
+
+authors:
+  - Thomas Sawyer
+
+description:
+  RAML is a 100% Ruby parsable data language.
+
+resources:
+  home  : http://rubyworks.github.com/raml
+  code  : http://github.com/rubyworks/raml
+  mail  : http://groups.google.com/group/rubyworks-mailinglist
+  api   : http://rubyworks.github.com/raml/docs/api
+  host  : http://rubygems.org/gems/raml
+  wiki  : http://wiki.github.com/rubyworks/raml
+  repo  : git://github.com/rubyworks/raml.git
+
+copyright:
+  Copyright (c) 2010 Thomas Sawyer

@@ -1,0 +1,33 @@
+grammar RAMLNumbers
+
+  rule number
+    (float / integer)
+  end
+
+  rule float
+   (
+    (( '+' / '-')? plain_digits '.' plain_digits) /
+    (( '+' / '-')? plain_digits ('E' / 'e') plain_digits ) /
+    (( '+' / '-')? plain_digits '.') / 
+    (( '+' / '-')? '.' plain_digits) 
+   ) {
+      def eval
+        text_value.to_f
+      end
+   }
+  end
+
+  rule integer
+    (( '+' / '-' )? plain_digits) {
+      def eval
+        text_value.to_i
+      end
+    }
+  end
+
+  rule plain_digits
+    [0-9] [0-9]*      
+  end
+
+end
+

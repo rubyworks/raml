@@ -1,0 +1,48 @@
+grammar RAMLInterface
+  include RAMLNumbers
+  include RAMLString
+
+  rule interface
+    arguments comma options / arguments / options
+  end
+
+  rule arguments
+    argument (comma argument)*
+  end 
+
+  rule argument
+    ( string / number )
+  end
+
+  rule options
+    option (comma option)*
+  end
+
+  rule option
+    key ( ':' / '=>' ) argument
+  end
+
+  rule key
+    [a-zA-Z] [a-zA-Z0-9]*
+  end
+
+  rule block
+    'do'
+      config*
+    'end'
+  end
+
+  rule comma
+    whitespace ',' whitespace
+  end
+
+  rule whitespace
+    [ \t\n]*
+  end
+
+  rule space
+    [ \t]+
+  end
+
+end
+

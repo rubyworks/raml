@@ -1,0 +1,2 @@
+source "http://rubygems.org"
+example "this", "that", 10

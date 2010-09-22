@@ -1,0 +1,8 @@
+grammar RAMLString
+
+  rule string
+    '"' [a-zA-Z] [a-zA-Z0-9]+ '"'
+  end
+
+end
+

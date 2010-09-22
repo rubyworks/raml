@@ -1,0 +1,23 @@
+= Ruby Ambidextrous Meta-Language
+
+
+== DESCRIPTION
+
+RAML is a flexable data format, suitable for a variety of uses, such as 
+configuration files.
+
+Admittedly, "Ruby Ambidextrous Meta-Language" is a funny name. But
+nonetheless fitting, becuase unlike YAML, RAML can handle a larger variety
+of data formats, including markup. Unlike YAML, RAML is not a serialization
+language. In the respect it is more akin to JSON. Indeed, you can think of
+RAML to Ruby as JSON is to Javascript.
+
+
+== COPYING
+
+(Ruby License)
+
+Copyright (c) 2010 Thomas Sawyer
+
+RAML is distributed under the same license as Ruby itself.
+
