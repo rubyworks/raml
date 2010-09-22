@@ -9,8 +9,15 @@ configuration files.
 Admittedly, "Ruby Ambidextrous Meta-Language" is a funny name. But
 nonetheless fitting, becuase unlike YAML, RAML can handle a larger variety
 of data formats, including markup. Unlike YAML, RAML is not a serialization
-language. In the respect it is more akin to JSON. Indeed, you can think of
-RAML to Ruby as JSON is to Javascript.
+language. In the respect it is more akin to JSON.
+
+
+== IMPLEMENTATION
+
+The current implementation simply evals the format within a $SAFE=4
+sandbox. This is not the prefered implmentation as it allows Ruby code
+to be executed. Ideally a separate parser could be written to ensure
+data only files. (Though we will still provide the eval parser as an option.)
 
 
 == COPYING
