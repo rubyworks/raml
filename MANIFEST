@@ -1,5 +1,5 @@
-#!mast -x Syckfile bin lib meta test [A-Z]*
-lib/raml/data.rb
+#!mast -x Syckfile bin lib meta qed test [A-Z]*
+lib/raml/eval_parser.rb
 lib/raml/ripper.rb
 lib/raml/treetop/parser.rb
 lib/raml/treetop/syntax/interface.treetop
@@ -8,5 +8,12 @@ lib/raml/treetop/syntax/raml.treetop
 lib/raml/treetop/syntax/string.treetop
 lib/raml/treetop.rb
 lib/raml.rb
-PROFILE
-VERSION
+meta/gemfile
+meta/profile
+qed/applique/document.rb
+qed/overview.rdoc
+qed/samples/sample1.rml
+qed/samples/sample2.rml
+Rakefile
+HISTORY.rdoc
+README.rdoc
