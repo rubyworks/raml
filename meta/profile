@@ -10,7 +10,7 @@ authors:
   - Thomas Sawyer
 
 description:
-  RAML is a 100% Ruby parsable data language.
+  RAML is a Ruby-syntax-based data language.
 
 resources:
   home  : http://rubyworks.github.com/raml

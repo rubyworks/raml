@@ -1,0 +1,12 @@
+= RELEASE HISTORY
+
+== 0.1.0 | 2010-09-28
+
+A very early release of RAML, presently only supporting an eval-based parser.
+Ultimately the intent is to provide a true parser, that can restict the format
+to pure data.
+
+Changes:
+
+* Initial implementation.
+
