@@ -11,12 +11,7 @@ Given a RAML document:
 We can load the text via the #load method. (Note above document text has
 been placed in the @text variable.)
 
-  raml = RAML.load(@text)
-
-The result is a RAML object, which can be converted to more usable form
-via #to_h.
-
-  data = raml.to_h
+  data = RAML.load(@text)
 
   data.assert == {:website=>"http://rubygems.org"}
 
@@ -26,10 +21,18 @@ for nested entries.
 Given a RAML document:
 
   resources do
-    home ""
-    docs ""
-    wiki ""
+    home "http://rubyworks.github.com/raml"
+    docs "http://rubyworks.github.com/raml/docs/api"
+    wiki "http://wiki.rubyworks.github.com/raml"
   end
+
+We get a two layer hash.
+
+  data = RAML.load(@text)
+
+  data[:resources][:home].assert == "http://rubyworks.github.com/raml"
+  data[:resources][:docs].assert == "http://rubyworks.github.com/raml/docs/api"
+  data[:resources][:wiki].assert == "http://wiki.rubyworks.github.com/raml"
 
 RAML is also considers the content of a block. If it is a scalar entry,
 such as a String, then that will be assigned to the key.
@@ -37,23 +40,18 @@ such as a String, then that will be assigned to the key.
 Given a RAML document:
 
   description do
-    "This is a description.\n"
-    "It can have multiple lines.\n"
-    "RAML handles this just fine,\n"
-    "because Ruby would too."
+    "This is a description.\n"       \
+    "It can have multiple lines.\n"  \
+    "RAML handles this just fine,\n" \
+    "because Ruby does too."
   end
 
 Loading this document,
 
-  raml = RAML.load(@text)
-
-The result is a RAML object, which can be converted to more usable form
-via #to_h.
-
-  data = raml.to_h
+  data = RAML.load(@text)
 
   data[:description].assert.start_with?("This is")
-  data[:description].assert.end_with?("would too.")
+  data[:description].assert.end_with?("does too.")
 
 RAML has some options that makes it more flexible than many other data
 lanaguages. For instance, it can allow for multi-key entries.
@@ -66,9 +64,7 @@ Given a RAML document:
 
 We simply need to inform the loader to allow identical keys.
 
-  raml = RAML.load(@text, :multikey=>true)
-
-  data = raml.to_h
+  data = RAML.load(@text, :multikey=>true)
 
   data.assert == {
     :source=>"http://rubygems.org",
@@ -78,13 +74,10 @@ We simply need to inform the loader to allow identical keys.
 If we did not turn on the multi-key option, then the last `gem` entry
 would have simply overwritten the former.
 
-  raml = RAML.load(@text)
-
-  data = raml.to_h
+  data = RAML.load(@text)
 
   data.assert == {
     :source=>"http://rubygems.org",
     :gem=>["ansi", "~> 1.1"]
   }
-
 
