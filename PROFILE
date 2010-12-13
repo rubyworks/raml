@@ -13,13 +13,15 @@ description:
   RAML is a Ruby-syntax-based data language.
 
 resources:
-  home  : http://rubyworks.github.com/raml
-  code  : http://github.com/rubyworks/raml
-  mail  : http://groups.google.com/group/rubyworks-mailinglist
-  api   : http://rubyworks.github.com/raml/docs/api
-  host  : http://rubygems.org/gems/raml
-  wiki  : http://wiki.github.com/rubyworks/raml
-  repo  : git://github.com/rubyworks/raml.git
+  home: http://rubyworks.github.com/raml
+  code: http://github.com/rubyworks/raml
+  mail: http://groups.google.com/group/rubyworks-mailinglist
+  api : http://rubyworks.github.com/raml/docs/api
+  host: http://rubygems.org/gems/raml
+  wiki: http://wiki.github.com/rubyworks/raml
+
+repoistories:
+  public: git://github.com/rubyworks/raml.git
 
 copyright:
   Copyright (c) 2010 Thomas Sawyer

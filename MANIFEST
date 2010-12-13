@@ -1,4 +1,5 @@
 #!mast -x Syckfile -x Profile .ruby bin lib man qed spec test [A-Z]*
+.ruby
 lib/raml/eval_parser.rb
 lib/raml/ripper.rb
 lib/raml/treetop/parser.rb
@@ -8,12 +9,12 @@ lib/raml/treetop/syntax/raml.treetop
 lib/raml/treetop/syntax/string.treetop
 lib/raml/treetop.rb
 lib/raml.rb
-meta/gemfile
-meta/profile
 qed/applique/document.rb
 qed/overview.rdoc
 qed/samples/sample1.rml
 qed/samples/sample2.rml
 Rakefile
 HISTORY.rdoc
+PROFILE
 README.rdoc
+VERSION

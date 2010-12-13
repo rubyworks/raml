@@ -3,10 +3,10 @@ name: raml
 title: RAML
 contact: Trans <transfire@gmail.com>
 resources: 
-  "": http://rubygems.org/gems/raml
   code: http://github.com/rubyworks/raml
   api: http://rubyworks.github.com/raml/docs/api
   mail: http://groups.google.com/group/rubyworks-mailinglist
+  host: http://rubygems.org/gems/raml
   home: http://rubyworks.github.com/raml
   wiki: http://wiki.github.com/rubyworks/raml
 pom_verison: 1.0.0
@@ -39,4 +39,6 @@ description: RAML is a Ruby-syntax-based data language.
 summary: Ruby Syntax Data Language
 authors: 
 - Thomas Sawyer
+repoistories: 
+  public: git://github.com/rubyworks/raml.git
 created: 2010-09-21
