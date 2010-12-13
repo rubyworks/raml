@@ -1,4 +1,4 @@
-#!mast -x Syckfile bin lib meta qed test [A-Z]*
+#!mast -x Syckfile -x Profile .ruby bin lib man qed spec test [A-Z]*
 lib/raml/eval_parser.rb
 lib/raml/ripper.rb
 lib/raml/treetop/parser.rb
