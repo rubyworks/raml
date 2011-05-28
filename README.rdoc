@@ -1,30 +1,59 @@
 = Ruby Ambidextrous Meta-Language
 
 
+== RESOURCES
+
+* home: http://rubyworks.github.com/raml
+* code: http://github.com/rubyworks/raml
+* mail: http://googlegroups.com/group/rubyworks-mailinglist
+
+
 == DESCRIPTION
 
-RAML is a flexable data format, suitable for a variety of uses, such as 
-configuration files.
+RAML is a flexable data format, suitable for a variety of uses, such
+as configuration files.
 
 Admittedly, "Ruby Ambidextrous Meta-Language" is a funny name. But
-nonetheless fitting, becuase unlike YAML, RAML can handle a larger variety
-of data formats, including markup. Unlike YAML, RAML is not a serialization
-language. In the respect it is more akin to JSON.
+nonetheless fitting, becuase unlike YAML, RAML can handle a wider
+variety of data format design needs, even limited markup formats.
+Unlike YAML, RAML is not a serialization language.
 
 
-== IMPLEMENTATION
+== SYNOPSIS
 
-The current implementation simply evals the format within a $SAFE=4
-sandbox. This is not the prefered implmentation as it allows Ruby code
-to be executed. Ideally a separate parser could be written to ensure
-data only files. (Though we will still provide the eval parser as an option.)
+Basic usage entails providing a RAML document to either RAML.eval() 
+or RAML.load().
+
+  RAML.eval("name 'Joe'")
+
+  RAML.load("name 'Bob'")
+
+Theses class methods can also take IO objects.
+
+  RAML.eval(File.new('foo.raml'))
+
+  RAML.load(File.new('foo.rml'))
+
+See the QED documentation for more detailed examples.
+
+
+== STATUS
+
+The current implementation simply has two different parsers, a Ripper based
+parser and and a Kernel.eval based parser, utilized via RAML.load() and
+RAML.eval() respectively. The Ripper-based parser is not very robust at this
+time and is NOT RECOMMEDED for production use, as it will parse invalid
+RAML documents without complaint. The eval parser on the other hand works well
+and can run with $SAFE=0 or in a $SAFE=4 sandbox, which mitigates most
+(though not all) security concerns.
 
 
 == COPYING
 
-(Ruby License)
+(MIT License)
 
 Copyright (c) 2010 Thomas Sawyer
 
-RAML is distributed under the same license as Ruby itself.
+RAML is distributed under the terms of the MIT license.
+See COPYING.rdoc for details.
 

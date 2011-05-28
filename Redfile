@@ -10,35 +10,24 @@ grancher:
   service: grancher
   active: true
 
-gemcutter:
-  service: GemCutter
-  active: true
-
-box:
-  service: Box
-  types  : [gem]
+gem:
+  service: Gem
   active : true
 
-ridoc:
-  service: RIDoc
+ri:
+  service: RI
   include: ~
   exclude: ~
-  output : ri
-  active : true
+  output : ~
+  active : false
 
 rdoc:
   service : RDoc
   template: newfish
   include : ~
-  exclude : [ Syckfile ]
-  output  : site/docs/api
+  exclude : [ Rakefile, Redfile, Version, Profile ]
+  output  : site/rdoc
   active  : true
-
-syntax:
-  service  : Syntax
-  loadpath : ~
-  exclude  : ~
-  active   : false
 
 testrb:
   service  : testrb
@@ -66,11 +55,11 @@ stats:
   output   : ~
   active   : true
 
-vclog:
-  service  : VClog
-  formats  : [json]
-  #layout   : rel    # gnu
-  typed    : false
-  output   : ~
-  active   : false
+#vclog:
+#  service  : VClog
+#  formats  : [json]
+#  #layout   : rel    # gnu
+#  typed    : false
+#  output   : ~
+#  active   : false
 

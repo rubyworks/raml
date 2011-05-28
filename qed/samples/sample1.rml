@@ -1,2 +1,7 @@
 source "http://rubygems.org"
-example "this", "that", 10
+example "this", 10, true
+another do
+  name "Tom"
+  age 41
+  weight 229 
+end
