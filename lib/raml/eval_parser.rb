@@ -104,15 +104,12 @@ module RAML
 
       result = nil
 
-      if block
-        thread = Thread.new do
-          $SAFE  = safe_level unless $SAFE == safe_level
-          result = scope.instance_eval(&block)
-        end
-      else
-        thread = Thread.new do
-          $SAFE  = safe_level unless $SAFE == safe_level
-          result = scope.instance_eval(code, file)
+      thread = Thread.new co
+        SAFE = safe_level unless $SAFE == safe_level
+        result = if block
+          scope.instance_eval(&block)
+        else
+          scope.instance_eval(code, file)
         end
       end
 

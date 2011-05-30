@@ -48,6 +48,12 @@ and can run with $SAFE=0 or in a $SAFE=4 sandbox, which mitigates most
 (though not all) security concerns.
 
 
+== SPECIAL THANKS
+
+Big props to <b>Robert Dober</b> for taking the time to help me improve
+the code.
+
+
 == COPYING
 
 (MIT License)
