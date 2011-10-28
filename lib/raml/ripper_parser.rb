@@ -10,7 +10,10 @@ module RAML
   # best the approach to implmentation. But your humble author is no expert
   # on Ripper or parsers in general.
   #
-  # FIXME: add non hash block value support
+  # FIXME: This class needs work. I currently handles basic cases, but will
+  # incorrectly parse complex cases.
+  #
+  # FIXME: Add non hash block value support.
   class RipperParser
 
     def initialize(options={})
