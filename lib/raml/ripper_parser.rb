@@ -81,6 +81,8 @@ module RAML
         d, @k, @v = *h
         @v << n
         set(d)
+      when '.'
+        raise SyntaxError, "evaluations forbidden"
       else
         rest.each do |r|
           clean(r, d)
