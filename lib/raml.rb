@@ -6,28 +6,6 @@ end
 
 module RAML
 
-  # Evaluate a RAML document. Like `load()` but parses the 
-  # document via #eval. This can be done a $SAFE level 4
-  # by setting the :safe option to +true+.
-  #
-  # Arguments
-  #
-  #   io - a String, File or any object that responds to #read.
-  #
-  # Options
-  #
-  #   :safe     - true/false
-  #   :keep     - methods to keep in scope
-  #   :scope    - an object to act as the evaluation context
-  #   :multikey - handle duplicate keys
-  #
-  # Returns [Hash] data parsed from document.
-  def self.eval(io, options={})
-    code, file = io(io)
-    parser = RAML::EvalParser.new(options)
-    parser.parse(code, file)
-  end
-
   # Load a RAML document. Like `eval()` but parses the document
   # via Ripper, ensuring a pure data format.
   #
@@ -40,10 +18,59 @@ module RAML
   #
   # Options
   #
+  #   :eval     - false for data-only parser
+  #   :safe     - true sets $SAFE=4
+  #   :keep     - public methods to keep in scope
+  #   :scope    - an object to act as the evaluation context
   #   :multikey - handle duplicate keys
   #
   # Returns [Hash] data parsed from document.
   def self.load(io, options={})
+    if FalseClass === options[:eval]
+      read(io, options)
+    else
+      eval(io, options)
+    end
+  end
+
+  # Evaluate a RAML document. Like `load()` but parses the  document via #eval.
+  # (same as load with :eval=>true). This can be done a $SAFE level 4 by
+  # setting the :safe option to +true+.
+  #
+  # Arguments
+  #
+  #   io - a String, File or any object that responds to #read.
+  #
+  # Options
+  #
+  #   :safe     - true/false
+  #   :keep     - public methods to keep in scope
+  #   :scope    - an object to act as the evaluation context
+  #   :multikey - handle duplicate keys
+  #
+  # Returns [Hash] data parsed from document.
+  def self.eval(io, options={})
+    code, file = io(io)
+    parser = RAML::EvalParser.new(options)
+    parser.parse(code, file)
+  end
+
+  # Read in a RAML document. Like `load()` but parses the  document via Ripper
+  # (same as load with :eval=>false). This only work in Ruby 1.9+, otherwise it
+  # falls back to the eval parer with `:safe=>true`.
+  #
+  # Arguments
+  #
+  #   io - a String, File or any object that responds to #read.
+  #
+  # Options
+  #
+  #   :keep     - public methods to keep in scope
+  #   :scope    - an object to act as the evaluation context
+  #   :multikey - handle duplicate keys
+  #
+  # Returns [Hash] data parsed from document.
+  def self.read(io, options={})
     code, file = io(io)
     if RUBY_VERSION > '1.9'
       parser = RAML::RipperParser.new(options)

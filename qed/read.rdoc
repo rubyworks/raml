@@ -1,6 +1,6 @@
-= RAML.load
+= RAML.read
 
-The RAML.load() method parses a RAML document using Ripper.
+The RAML.read() method parses a RAML document using Ripper.
 In this way a RAML document is treated purely as data and cannot
 contain any Ruby scripting.
 
@@ -12,10 +12,10 @@ Given a RAML document:
 
   website "http://rubygems.org"
 
-We can load the text via the #load method. (Note above document text has
+We can load the text via the #read method. (Note above document text has
 been placed in the @text variable.)
 
-  data = RAML.load(@text)
+  data = RAML.read(@text)
 
   data.assert == {:website=>"http://rubygems.org"}
 
@@ -32,7 +32,7 @@ Given a RAML document:
 
 We get a two layer hash.
 
-  data = RAML.load(@text)
+  data = RAML.read(@text)
 
   data[:resources][:home].assert == "http://rubyworks.github.com/raml"
   data[:resources][:docs].assert == "http://rubyworks.github.com/raml/docs/api"
@@ -52,7 +52,7 @@ Given a RAML document:
 
 Loading this document, description will contain the text as expected.
 
-  data = RAML.load(@text)
+  data = RAML.read(@text)
 
   text = data[:description].sub(/\s+/, ' ').strip
 
@@ -72,9 +72,9 @@ Given a RAML document:
   gem "facets", "~> 2.8"
   gem "ansi", "~> 1.1"
 
-We simply need to inform the loader to allow identical keys.
+We simply need to inform the reader to allow identical keys.
 
-  data = RAML.load(@text, :multikey=>true)
+  data = RAML.read(@text, :multikey=>true)
 
   data.assert == {
     :source=>"http://rubygems.org",
@@ -84,25 +84,26 @@ We simply need to inform the loader to allow identical keys.
 If we did not turn on the multi-key option, then the last `gem` entry
 would have simply overwritten the former.
 
-  data = RAML.load(@text)
+  data = RAML.read(@text)
 
   data.assert == {
     :source=>"http://rubygems.org",
     :gem=>["ansi", "~> 1.1"]
   }
 
-Not let's show-off the benefit of using RAML.load instead of RAML.eval.
+Not let's show-off the benefit of using RAML.read instead of RAML.eval.
 
 Given a RAML document:
 
-  sum 1 + 1
+  sum "word".upcase
 
-We will see that the value of `sum`, namely 1 + 1, CANNOT be evaluated and
+We will see that the result of calling `#upcase` CANNOT be evaluated and
 will raise an error.
 
   expect Exception do
-    data = RAML.load(@text)
+    data = RAML.read(@text)
   end if RUBY_VERSION >= '1.9'
 
 Note, this last assertion is only true for Ruby 1.9+, becuase Ripper is
 not supported by older versions of Ruby.
+
