@@ -18,6 +18,9 @@ nonetheless fitting, becuase unlike YAML, RAML can handle a wider
 variety of data format design needs, even limited markup formats.
 Unlike YAML, RAML is not a serialization language.
 
+IMPORTANT: RAML supports Ruby 1.9+ only. Ruby 1.8.x is not supported
+for it's lack of BasicObject class.
+
 
 == SYNOPSIS
 
