@@ -77,11 +77,11 @@ module RAML
       @scope ||= (
         qua_class = (class << object; self; end)
 
-        qua_class.__send__(:protected, :binding)
+        #qua_class.__send__(:protected, :binding)
 
         methods = [object.public_methods, Object.private_instance_methods].flatten
         methods.each do |m|
-          next if /^(__|instance_|singleton_method_|method_missing$|extend$|initialize$|object_id$|p$)/ =~ m.to_s
+          next if /^(__|instance_|singleton_method_|binding$|method_missing$|extend$|initialize$|object_id$|p$)/ =~ m.to_s
           next if keep.any?{ |k| k === m.to_s }
           qua_class.__send__(:undef_method, m)
         end
