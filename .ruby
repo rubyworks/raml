@@ -9,7 +9,15 @@ copyrights:
   year: '2010'
 replacements: []
 alternatives: []
-requirements: []
+requirements:
+- name: detroit
+  groups:
+  - build
+  development: true
+- name: qed
+  groups:
+  - test
+  development: true
 dependencies: []
 conflicts: []
 repositories: []
