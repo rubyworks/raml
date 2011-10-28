@@ -10,6 +10,7 @@ copyrights:
 replacements: []
 alternatives: []
 requirements:
+- name: blankslate
 - name: detroit
   groups:
   - build

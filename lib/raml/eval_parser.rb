@@ -1,6 +1,11 @@
 require 'thread'
 require 'raml/multi_value'
 
+unless defined?(::BasicObject)
+  require 'blankslate'
+  BasicObject = BlankSlate
+end
+
 module RAML
 
   # The EvalParser parses RAML documents using standard Ruby evaluation.
