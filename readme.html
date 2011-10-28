@@ -1,0 +1,78 @@
+
+<h1>Ruby Ambidextrous Meta-Language</h1>
+
+<p><a href="http://rubyworks.github.com/raml">Homepage</a> | <a
+href="http://github.com/rubyworks/raml">Source Code</a> | <a
+href="http://googlegroups.com/group/rubyworks-mailinglist">Mailing List</a>
+<a href="irc://chat.us.freenode.net/rubyworks">IRC</a></p>
+
+<p><a href="http://travis-ci.org/rubyworks/raml"><img
+src="http://travis-ci.org/rubyworks/raml.png" /></a></p>
+
+<h2>DESCRIPTION</h2>
+
+<p>RAML is a flexable data format suitable for a variety of uses, such as
+configuration files.</p>
+
+<p>Admittedly, “Ruby Ambidextrous Meta-Language” is a funny name. But
+nonetheless fitting, becuase unlike YAML, RAML can handle a wider variety
+of data format design needs, even limited markup formats. Unlike YAML, RAML
+is not a serialization language.</p>
+
+<h2>SYNOPSIS</h2>
+
+<p>The current implementation simply has two different parsers, a Ripper based
+parser and and a Kernel.eval based parser, utilized via `RAML.load()` and
+`RAML.eval()` respectively.</p>
+
+<p>The <em>Ripper</em> based parser is not very robust at this time and is NOT
+RECOMMEDED FOR PRODUCTION USE, as it will parse invalid RAML documents
+without complaint.</p>
+
+<p>The <em>eval</em> parser on the other hand works well and can run with
+`$SAFE=0` or in a `$SAFE=4` sandbox, which mitigates most (though not all)
+security concerns.</p>
+
+<p>Examples of usage entails providing a RAML document string to either
+RAML.eval()  or RAML.load().</p>
+
+<pre>RAML.eval(&quot;name 'Joe'&quot;)
+
+RAML.load(&quot;name 'Bob'&quot;)</pre>
+
+<p>These class methods can also take IO objects.</p>
+
+<pre>RAML.eval(File.new('foo.raml'))
+
+RAML.load(File.new('foo.rml'))</pre>
+
+<p>A RAML document is Ruby code operating under a set of open domain language
+rules. An example looks like:</p>
+
+<pre>source &quot;http://rubygems.org&quot;
+example &quot;this&quot;, 10, true
+another do
+  name &quot;Tonto&quot;
+  age 42
+  weight 229 
+end</pre>
+
+<p>Read in via RAML produces the following Hash:</p>
+
+<pre>{:source=&gt;&quot;http://rubygems.org&quot;,
+ :example=&gt;[&quot;this&quot;, 10, true],
+ :another=&gt;{:name=&gt;&quot;Tonto&quot;, :age=&gt;42, :weight=&gt;229}}</pre>
+
+<p>See the QED documentation for more detailed examples.</p>
+
+<h2>SPECIAL THANKS</h2>
+
+<p>Big props to <b>Robert Dober</b> for taking the time to help me improve the
+code.</p>
+
+<h2>COPYRIGHTS</h2>
+
+<p>Copyright © 2010 Rubyworks</p>
+
+<p>RAML is distributed under the terms of the <b>FreeBSD</b> License. See
+COPYING.rdoc for details.</p>

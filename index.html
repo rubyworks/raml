@@ -1,1 +1,91 @@
-My GitHub Page
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<HTML>
+<HEAD>
+  <TITLE>RAML</TITLE>
+
+  <LINK rel="shortcut icon" href="assets/ruby.png"/>
+
+  <LINK type="text/css" rel="stylesheet" href="assets/reset.css" />
+  <LINK type="text/css" rel="stylesheet" href="assets/custom.css" />
+
+  <SCRIPT language="javascript" type="text/javascript" src="assets/jquery.js"></SCRIPT>
+  <SCRIPT language="javascript" type="text/javascript" src="assets/highlight.js"></SCRIPT>
+
+  <SCRIPT type="text/javascript">
+    $(document).ready(function() {
+      $('#readme').load('readme.html', function(){
+        $('pre').wrapInner('<code></code>');
+        hljs.tabReplace = '    ';
+        hljs.initHighlightingOnLoad('ruby');
+      });
+    });
+  </SCRIPT>
+
+  <LINK type="text/css" rel="stylesheet" href="assets/highlight.css" />
+</HEAD>
+<BODY>
+
+<div id="header" class="centered">
+  <div class="title">
+    <h1>RAML</h1>
+  </div>
+</div>
+
+<div id="main" class="centered">
+  <table width="100%">
+  <tr><td>
+    <div id="doc">
+      <p>RAML is a Ruby-based data language. It is similar to YAML but 
+      retains many of the programatic flexibilities of Ruby.</p><br/>
+      <a href="#" onclick="$('#readme').toggle();">Toggle README</a>
+    </div>
+  </td><td>
+    <div id="nav">
+      <ul>
+          <li><a href="http://rubydoc.info/gems/raml/file/QED.rdoc">QED</a></li>
+          <li><a href="http://rubydoc.info/gems/raml/frames">API</a></li>
+          <li><a href="http://groups.google.com/group/rubyworks-mailinglist">MAIL</a></li>
+          <li><a href="http://github.com/rubyworks/raml">CODE</a></li>
+      </ul>
+    </div>
+  </td></tr>
+  </table>
+</div>
+
+<div id="readme" class="centered" style="display: none;">
+</div>
+
+<div id="footer" class="centered">
+  <div class="advert">
+    <script type="text/javascript"><!--
+    google_ad_client = "pub-1126154564663472";
+    /* RUBYWORKS 09-10-02 728x90 */
+    google_ad_slot = "0788888658";
+    google_ad_width = 728;
+    google_ad_height = 90;
+    //-->
+    </script>
+    <script type="text/javascript"
+    src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+    </script>
+  </div>
+
+  <div class="copyright">
+    Copyright &copy; 2010 Rubyworks. All Rights Reserved.
+  </div>
+</div>
+
+<div style="position: absolute; top: 0; right: 0;">
+  <a href="http://github.com/rubyworks/raml"><img src="http://rubyworks.github.com/assets/images/fork-me.png" /></a>
+</div>
+
+<div id="rubyworks" style="position: fixed; bottom: 5px; right: 10px; padding: 0; opacity: 0.3;">
+  <a href="http://rubyworks.github.com">
+    <img src="http://rubyworks.github.com/assets/images/seal.png" height="150px" />
+  </a>
+</div>
+
+</BODY>
+</HTML>
+
