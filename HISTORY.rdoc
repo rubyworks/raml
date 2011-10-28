@@ -2,16 +2,26 @@
 
 == 0.2.1 | 2011-10-28
 
+This is quick fix release, to make sure QED.rdoc document is in gem
+for documentation sake on rubydoc.info.
+
+Changes:
+
+* Add QED.rdoc to gem.
+
+
+== 0.2.0 | 2011-10-28
+
 API has changed a bit to allow `RAML.load` to use eval parser unless 
 the `:eval=>false` option is used. Also added `RAML.read` which does
 the same. This release also modernized the build configuration.
 
 Changes:
 
+* Ripper provides pure data parser, but not highly robust yet.
 * RAML.load uses eval parser unless :eval=>false.
 * Add RAML.read method.
 * Modernize build configuration.
-
 
 == 0.1.0 | 2010-09-28
 
