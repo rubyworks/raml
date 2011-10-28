@@ -9,9 +9,10 @@ lib/raml.rb
 lib/raml.yml
 qed/applique/document.rb
 qed/eval.rdoc
-qed/load.rdoc
+qed/read.rdoc
 qed/samples/sample1.rml
 qed/samples/sample2.rml
 HISTORY.rdoc
 README.rdoc
+QED.rdoc
 COPYING.rdoc

@@ -28,7 +28,6 @@ resources:
   mail: http://groups.google.com/group/rubyworks-mailinglist
   api: http://rubyworks.github.com/raml/docs/api
   host: http://rubygems.org/gems/raml
-  wiki: http://wiki.github.com/rubyworks/raml
 extra: {}
 load_path:
 - lib
