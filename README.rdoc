@@ -10,11 +10,11 @@
 
 == DESCRIPTION
 
-RAML is a flexable data format suitable for a variety of uses, such
+RAML is a flexible data format suitable for a variety of uses, such
 as configuration files.
 
 Admittedly, "Ruby Ambidextrous Meta-Language" is a funny name. But
-nonetheless fitting, becuase unlike YAML, RAML can handle a wider
+nonetheless fitting, because unlike YAML, RAML can handle a wider
 variety of data format design needs, even limited markup formats.
 Unlike YAML, RAML is not a serialization language.
 
@@ -46,24 +46,25 @@ Or an IO object,
 
   RAML.load(File.new('foo.rml'))
 
-The method also takes an `:safe` option that is used to set the level evaluation
-Ruby is allowed. If the option is `false`, the default, than evaluation is handled
-with Ruby `$SAFE=0`. If `true` the $SAFE=4.
+The method also takes a `:safe` option that is used to set the level of evaluation
+Ruby is allowed.
 
   RAML.load(raml, :safe=>true)
 
-Safe evaluation is useful when loading untrusted data files. With `$SAFE=4`
-most (though not all) security concerns are mitigated.
+If the option is `false`, which is the default, than evaluation is handled
+with `$SAFE=0`. If `true` then $SAFE=4. Safe evaluation is useful when loading
+untrusted data files. With `$SAFE=4` most (though not all) security concerns
+are mitigated.
 
-For a complete lockdown on evaluation, allowing only data setting and no other
+For a complete lock-down on evaluation, allowing only data settings and no other
 forms of Ruby evaluation, `RAML.load` supports the `:eval` option. By default
-it is `true`. By setting it to `false` (not `nil`), all code evaluation
-can be turned off.
+it is set to `true`. By setting it to `false` (but not `nil`), all code
+evaluation can be turned off.
 
   RAML.load(raml, :eval=>false)
 
 Under the hood the current implementation  has two different parsers, a
-Ripper-based parser and a Kernel.eval based parser. By setting `:eval=>false`
+Ripper based parser and a Kernel.eval based parser. By setting `:eval=>false`
 the Ripper parser is used rather than the regular eval parser.
 
 For additional examples and details on working with RAML files, see
