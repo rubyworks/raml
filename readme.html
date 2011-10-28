@@ -19,35 +19,13 @@ nonetheless fitting, becuase unlike YAML, RAML can handle a wider variety
 of data format design needs, even limited markup formats. Unlike YAML, RAML
 is not a serialization language.</p>
 
+<p>IMPORTANT: RAML supports Ruby 1.9+ only. Ruby 1.8.x is not supported for
+it’s lack of BasicObject class.</p>
+
 <h2>SYNOPSIS</h2>
 
-<p>The current implementation simply has two different parsers, a Ripper based
-parser and and a Kernel.eval based parser, utilized via `RAML.load()` and
-`RAML.eval()` respectively.</p>
-
-<p>The <em>Ripper</em> based parser is not very robust at this time and is NOT
-RECOMMEDED FOR PRODUCTION USE, as it will parse invalid RAML documents
-without complaint.</p>
-
-<p>The <em>eval</em> parser on the other hand works well and can run with
-`$SAFE=0` or in a `$SAFE=4` sandbox, which mitigates most (though not all)
-security concerns.</p>
-
-<p>Examples of usage entails providing a RAML document string to either
-RAML.eval()  or RAML.load().</p>
-
-<pre>RAML.eval(&quot;name 'Joe'&quot;)
-
-RAML.load(&quot;name 'Bob'&quot;)</pre>
-
-<p>These class methods can also take IO objects.</p>
-
-<pre>RAML.eval(File.new('foo.raml'))
-
-RAML.load(File.new('foo.rml'))</pre>
-
 <p>A RAML document is Ruby code operating under a set of open domain language
-rules. An example looks like:</p>
+rules. An example RAML document looks like this:</p>
 
 <pre>source &quot;http://rubygems.org&quot;
 example &quot;this&quot;, 10, true
@@ -57,13 +35,49 @@ another do
   weight 229 
 end</pre>
 
-<p>Read in via RAML produces the following Hash:</p>
+<p>Loading this document in via RAML would produce the following Hash:</p>
 
 <pre>{:source=&gt;&quot;http://rubygems.org&quot;,
  :example=&gt;[&quot;this&quot;, 10, true],
  :another=&gt;{:name=&gt;&quot;Tonto&quot;, :age=&gt;42, :weight=&gt;229}}</pre>
 
-<p>See the QED documentation for more detailed examples.</p>
+<p>Loading is handled by the `RAML.load` method. The method can take a string,</p>
+
+<pre>RAML.load(&quot;name 'Bob'&quot;)</pre>
+
+<p>Or an IO object,</p>
+
+<pre>RAML.load(File.new('foo.rml'))</pre>
+
+<p>The method also takes an `:safe` option that is used to set the level
+evaluation Ruby is allowed. If the option is `false`, the default, than
+evaluation is handled with Ruby `$SAFE=0`. If `true` the $SAFE=4.</p>
+
+<pre>RAML.load(raml, :safe=&gt;true)</pre>
+
+<p>Safe evaluation is useful when loading untrusted data files. With `$SAFE=4`
+most (though not all) security concerns are mitigated.</p>
+
+<p>For a complete lockdown on evaluation, allowing only data setting and no
+other forms of Ruby evaluation, `RAML.load` supports the `:eval` option. By
+default it is `true`. By setting it to `false` (not `nil`), all code
+evaluation can be turned off.</p>
+
+<pre>RAML.load(raml, :eval=&gt;false)</pre>
+
+<p>Under the hood the current implementation  has two different parsers, a
+Ripper-based parser and a Kernel.eval based parser. By setting
+`:eval=&gt;false` the Ripper parser is used rather than the regular eval
+parser.</p>
+
+<p>For additional examples and details on working with RAML files, see the QED
+demonstrandum.</p>
+
+<h2>IMPORTANT NOTE</h2>
+
+<p>The Ripper based parser is not yet robust and is NOT RECOMMENDED FOR
+PRODUCTION USE, as it will parse invalid RAML documents without complaint.
+The eval parser on the other hand works well.</p>
 
 <h2>SPECIAL THANKS</h2>
 
