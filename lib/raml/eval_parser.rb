@@ -29,7 +29,7 @@ module RAML
       self.safe      = options[:safe]
       #self.file      = options[:file]
       self.keep      = options[:keep]
-      self.scope     = options[:scope] || Object.new
+      self.scope     = options[:scope] || BasicObject.new
       self.multi_key = options[:multikey]
     end
 
@@ -68,25 +68,24 @@ module RAML
       @multi_key = !!bool
     end
 
-    # Returns [Object] scope object.
+    # Returns [BasicObject,Object] scope object.
     attr_reader :scope
 
     # Sets the scope object while preparing it for use as the evaluation
     # context.
     def scope=(object)
       @scope ||= (
-        qua_class = (class << object; self; end)
-
-        methods = [object.public_methods, Object.private_instance_methods].flatten
-        methods.each do |m|
-          next if /^(__|instance_|singleton_method_|binding$|method_missing$|extend$|initialize$|object_id$|p$)/ =~ m.to_s
-          next if keep.any?{ |k| k === m.to_s }
-          qua_class.__send__(:undef_method, m)
-        end
-
-        object.instance_variable_set("@__parser__", self)
-        object.extend MethodMissing
-
+        #qua_class = (class << object; self; end)
+        #methods = [object.public_methods, Object.private_instance_methods].flatten
+        #methods.each do |m|
+        #  next if /^(__|instance_|singleton_method_|binding$|method_missing$|extend$|initialize$|object_id$|p$)/ =~ m.to_s
+        #  next if keep.any?{ |k| k === m.to_s }
+        #  qua_class.__send__(:undef_method, m)
+        #end
+        parser = self
+        object.instance_eval{ @__parser__ = parser }
+        #object.instance_eval{ extend MethodMissing }
+        MethodMissing.__send__(:extend_object, object)
         object
       )
     end
@@ -95,7 +94,7 @@ module RAML
     def parse(code=nil, file=nil, &block)
       data = HASH.dup
 
-      scope.instance_variable_set("@__data__", data)
+      scope.instance_eval{ @__data__ = data}
 
       result = nil
 
