@@ -10,4 +10,16 @@ rvm:
 env:
   - RBXOPT="-X19"
   - RBXOPT=""
+matrix:
+  exclude:
+    - rvm: 1.8.7
+      env: RBXOPT="-X19"
+    - rvm: 1.9.2
+      env: RBXOPT="-X19"
+    - rvm: 1.9.3
+      env: RBXOPT="-X19"
+    - rvm: jruby
+      env: RBXOPT="-X19"
+    - rvm: ree
+      env: RBXOPT="-X19"
 
