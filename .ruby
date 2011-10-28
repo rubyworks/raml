@@ -35,7 +35,7 @@ revision: 0
 created: '2010-09-21'
 summary: Ruby Syntax Data Language
 title: RAML
-version: 0.2.0
+version: 0.2.1
 name: raml
 description: RAML is a Ruby-syntax-based data language.
 organization: rubyworks
