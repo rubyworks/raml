@@ -21,8 +21,8 @@ module RAML
     attr :options
 
     # You can pass in an object to act as the scope. All non-essential public
-    # and private methods will be removed from the scope unless a `keep`
-    # regex matches the name. Protected methods are also kept intact.
+    # and private Object methods will be removed from the scope unless a `keep`
+    # string or regex matches the name. Protected methods are also kept intact.
     def initialize(options={})
       @options   = options
 
@@ -79,10 +79,10 @@ module RAML
 
         qua_class.__send__(:protected, :binding)
 
-        methods = [object.public_methods, object.private_methods].flatten
+        methods = [object.public_methods, Object.private_instance_methods].flatten
         methods.each do |m|
           next if /^(__|instance_|singleton_method_|method_missing$|extend$|initialize$|object_id$|p$)/ =~ m.to_s
-          next if keep.any?{ |k| k =~ m.to_s }
+          next if keep.any?{ |k| k === m.to_s }
           qua_class.__send__(:undef_method, m)
         end
 
@@ -104,8 +104,8 @@ module RAML
 
       result = nil
 
-      thread = Thread.new co
-        SAFE = safe_level unless $SAFE == safe_level
+      thread = Thread.new do
+        $SAFE = safe_level unless $SAFE == safe_level
         result = if block
           scope.instance_eval(&block)
         else
