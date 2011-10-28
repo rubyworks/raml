@@ -25,9 +25,9 @@ repositories: []
 resources:
   home: http://rubyworks.github.com/raml
   code: http://github.com/rubyworks/raml
+  docs: http://rubydoc.info/gems/raml/frames
   mail: http://groups.google.com/group/rubyworks-mailinglist
-  api: http://rubyworks.github.com/raml/docs/api
-  host: http://rubygems.org/gems/raml
+  gems: http://rubygems.org/gems/raml
 extra: {}
 load_path:
 - lib
