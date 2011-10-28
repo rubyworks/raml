@@ -1,5 +1,6 @@
-#!mast .ruby bin lib man qed spec test [A-Z][A-Z]*
+#!mast .ruby .yardopts bin lib man qed spec test [A-Z]*.*
 .ruby
+.yardopts
 lib/raml/core_ext.rb
 lib/raml/eval_parser.rb
 lib/raml/multi_value.rb
@@ -13,3 +14,4 @@ qed/samples/sample1.rml
 qed/samples/sample2.rml
 HISTORY.rdoc
 README.rdoc
+COPYING.rdoc

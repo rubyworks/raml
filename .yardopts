@@ -1,0 +1,8 @@
+--title "RAML"
+--readme README.rdoc
+--protected
+--private
+lib/**/*.rb
+-
+[A-Z]*.*
+
