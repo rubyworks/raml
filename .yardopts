@@ -4,5 +4,6 @@
 --private
 lib/**/*.rb
 -
+QED.rdoc
 [A-Z]*.*
 

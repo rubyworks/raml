@@ -10,7 +10,9 @@ qed:
 qedoc:
   files: qed
   title: RAML Demonstrandum
-  output: QED.rdoc
+  output:
+    - QED.rdoc
+    - pages/qed.html
 
 gem:
   active: true
