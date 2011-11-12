@@ -12,19 +12,19 @@ qedoc:
   title: RAML Demonstrandum
   output:
     - QED.rdoc
-    - pages/qed.html
+    - web/qed.html
 
 gem:
   active: true
 
 github:
-  active: true
+  gh_page: web
 
 dnote:
-  output: log/NOTES.rdoc
+  output: log/notes.html
 
 vclog:
   output:
-    - log/Changes.rdoc
-    - log/History.rdoc
+    - log/changes.html
+    - log/history.html
 

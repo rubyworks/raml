@@ -1,6 +1,6 @@
 ---
 source:
-- meta
+- var
 authors:
 - name: 7rans
   email: transfire@gmail.com
@@ -39,4 +39,4 @@ version: 0.2.1
 name: raml
 description: RAML is a Ruby-syntax-based data language.
 organization: rubyworks
-date: '2011-10-28'
+date: '2011-11-11'
